@@ -13,7 +13,7 @@ namespace WithGraph.Connector
     public class ConnectGraphApi : Cmdlet
     {
         [Parameter(Position = 0,ParameterSetName ="Credentials")]
-        public PSCredential credentials { get; set; }
+        public PSCredential Credential { get; set; }
         [Parameter(Position = 1)]
         public PSCredential applicationID { get; set; }
 
@@ -22,12 +22,12 @@ namespace WithGraph.Connector
         protected override void BeginProcessing()
         {
             var AzureEnvName = (new AzureEnvironment()).Name;
-
             if(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(AzureEnvName))
             {
                 var _AzureEnviorment = AzureRmProfileProvider.Instance.Profile.Environments[AzureEnvName];
 
-                WriteVerbose(string.Format("Current Azure Enviorment: {0}", _AzureEnviorment));
+                logging.write(string.Format("Current Azure Enviorment: {0}", _AzureEnviorment), logtype.verbose);
+                //WriteVerbose(string.Format("Current Azure Enviorment: {0}", _AzureEnviorment));
                 AzureSession.NewSessionstate();
                 AzureSession.AzureEnvironment = _AzureEnviorment;
             }
@@ -36,8 +36,14 @@ namespace WithGraph.Connector
 
         protected override void ProcessRecord()
         {
-            WriteVerbose("Creating new azure session");
-            AzureAccount _Account = new AzureAccount();
+            logging.write("Creating new azure session", logtype.verbose);
+            AzureAccount Account = new AzureAccount();
+            //Account.SetProperty(AzureAccount.Property.Tenants, this.tenantid);
+            if(Credential != null)
+            {
+                Account.Id = Credential.UserName;
+                Account.Type = AzureAccount.AccountType.User;
+            }
             SecureString Password = new SecureString();
             //if(parameterse)
 

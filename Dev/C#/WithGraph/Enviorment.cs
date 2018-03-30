@@ -16,39 +16,47 @@ namespace WithGraph
         public static string CacheDir = Path.Combine(UserSave, "Cache");
         public static string classesDir = Path.Combine(UserSave, "Classes");
         public static string LogDir = Path.Combine(UserSave, "Log");
+        public static string LogFile = Path.Combine(LogDir, DateTime.Now.ToString("yyyyddMMHHmm")+".Log");
         public static Dictionary<String, String[]> ClassDepenable = new Dictionary<string, string[]>(); 
         //static String[] GraphOdataXML = 
 
-        static Enviorment()
+        static void Create()
         {
-            //Create Folders
-            if(!Directory.Exists(UserSave))
+            if (!Directory.Exists(UserSave))
             {
+                Console.WriteLine("Creating " + UserSave);
                 Directory.CreateDirectory(UserSave);
             }
 
-            if(!Directory.Exists(ConfigDir))
+            if (!Directory.Exists(ConfigDir))
             {
+                Console.WriteLine("Creating " + ConfigDir);
                 Directory.CreateDirectory(ConfigDir);
             }
 
-            if(!Directory.Exists(CacheDir))
+            if (!Directory.Exists(CacheDir))
             {
+                Console.WriteLine("Creating " + CacheDir);
                 Directory.CreateDirectory(CacheDir);
             }
 
-            if(Directory.Exists(classesDir))
+            if (!Directory.Exists(classesDir))
             {
+                Console.WriteLine("Creating " + classesDir);
                 Directory.CreateDirectory(classesDir);
             }
 
-            if (Directory.Exists(LogDir))
+            if (!Directory.Exists(LogDir))
             {
+                Console.WriteLine("Creating " + LogDir);
                 Directory.CreateDirectory(LogDir);
             }
+        }
 
-            //Import Odata
-
+        static Enviorment()
+        {
+            Create();
+            logging.write("GraphConnector started " + DateTime.Now.ToString()+"!");
         }
     }
 }
