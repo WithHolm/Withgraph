@@ -1,0 +1,140 @@
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\WithGraph.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\WithGraph.pdb
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\System.Management.Automation.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\obj\Debug\WithGraph.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\obj\Debug\WithGraph.pdb
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\WithGraph.dll.config
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Data.Edm.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Data.OData.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Logging.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Newtonsoft.Json.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\System.Spatial.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Management.Infrastructure.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Data.Edm.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Data.OData.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Logging.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Newtonsoft.Json.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\System.Spatial.xml
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\de\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\es\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\fr\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\it\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ja\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ko\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ru\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hans\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hant\Microsoft.Data.Edm.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\de\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\es\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\fr\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\it\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ja\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ko\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ru\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hans\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hant\Microsoft.Data.OData.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\de\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\es\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\fr\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\it\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ja\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ko\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ru\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hans\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hant\System.Spatial.resources.dll
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\obj\Debug\WithGraph.Properties.Resources.resources
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\obj\Debug\WithGraph.csproj.GenerateResource.Cache
+c:\users\phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\obj\Debug\WithGraph.csprojResolveAssemblyReference.cache
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Open.Azure.AD.CommonLibrary.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\RestSharp.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Open.Azure.AD.CommonLibrary.Resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Open.Azure.AD.CommonLibrary.pdb
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\RestSharp.xml
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\Microsoft.Open.Azure.AD.CommonLibrary.Resources.pdb
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\de\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\es\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\fr\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\it\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\ja\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hans\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\Users\Phil\documents\visual studio 2015\Projects\WithGraph\WithGraph\bin\Debug\zh-Hant\Microsoft.Open.Azure.AD.CommonLibrary.Resources.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.csprojResolveAssemblyReference.cache
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.csproj.GenerateResource.Cache
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.dll
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.pdb
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\WithGraph.dll.config
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\WithGraph.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\WithGraph.pdb
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Data.Edm.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Data.OData.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Newtonsoft.Json.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\System.Management.Automation.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\System.Spatial.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Management.Infrastructure.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Data.Edm.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Data.OData.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Newtonsoft.Json.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\System.Spatial.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\de\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\es\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\fr\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\it\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ja\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ko\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ru\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\de\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\es\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\fr\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\it\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ja\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ko\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ru\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\de\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\es\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\fr\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\it\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ja\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ko\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\ru\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\zh-Hans\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.Properties.Resources.resources
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.csproj.CoreCompileInputs.cache
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.csproj.CopyComplete
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\HtmlAgilityPack.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Graph.Core.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Graph.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.OData.Client.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.OData.Core.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.OData.Edm.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Spatial.dll
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\HtmlAgilityPack.pdb
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\HtmlAgilityPack.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Graph.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Graph.Core.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.OData.Client.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.OData.Core.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.OData.Edm.xml
+C:\git\Withgraph\Dev\C#\WithGraph\bin\Debug\Microsoft.Spatial.xml
