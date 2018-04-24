@@ -14,47 +14,6 @@ using System.Reflection;
 namespace WithGraph
 {
     [Cmdlet(VerbsCommunications.Write, "GraphLog")]
-    public class TestGraphLog : Cmdlet
-    {
-        [Parameter(Position = 0)]
-        public object Message { get; set; }
-
-        [Parameter]
-        public logtype Logtype = logtype.info;
-
-        public string Output { get; set; }
-
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-        }
-
-        protected override void ProcessRecord()
-        {
-            Output = logging.write(Message, Logtype);
-
-            if (Logtype == logtype.info)
-            {
-                WriteObject(Output);
-            }
-            else if (Logtype == logtype.verbose)
-            {
-                WriteVerbose(Output);
-            }
-            else if (Logtype == logtype.debug)
-            {
-                WriteDebug(Output);
-            }
-            base.ProcessRecord();
-        }
-
-        protected override void EndProcessing()
-        {
-            base.EndProcessing();
-        }
-    }
-
-    [Cmdlet(VerbsCommunications.Write, "GraphLog")]
     public class WriteGraphLog : Cmdlet
     {
         [Parameter(Position = 0)]
@@ -122,7 +81,7 @@ namespace WithGraph
 
     public class Logmessage
     {
-        public DateTime Time { get; set; }
+        public DateTime Time = DateTime.Now;
         public logtype Type { get; set; }
         public string Source { get; set; }
         public string Message { get; set; }
@@ -132,94 +91,81 @@ namespace WithGraph
         public void Parse(string Input)
         {
             var splitinput = Input.Split('|');
-            //Console.WriteLine(string.Join("<->", splitinput));
             Time = DateTime.ParseExact(splitinput[0],DatetimeOuptut,provider);
             Type = (logtype)Enum.Parse(typeof(logtype), splitinput[1]);
             Message = splitinput[2].Trim();
             Source = splitinput[3].Trim();
         }
 
-        public string Create(object Message, logtype type, string Source)
+        public void Create(String Message, logtype type, string Source)
         {
-            string Thismessage = string.Join(" ", Message);
-            Thismessage = Thismessage.Replace("|", " ");
+            this.Message = string.Join(" ", Message).Replace("|", " ");
             this.Source = Source;
-
-
-
-            //StackTrace stackTrace = new StackTrace();
-            //var mth = new StackTrace().GetFrame(2).GetMethod();
-            //var cls = mth.ReflectedType.Name;
-            //Console.WriteLine(cls);
-            //foreach (var trace in stackTrace.GetFrame(1).ToString())
-            //{
-            //    Console.WriteLine(trace.GetMethod());
-            //}
-            string Output = string.Format("{0}|{1}|\t{2}|{3}", DateTime.Now.ToString(DatetimeOuptut), type.ToString(), Thismessage, Source);
-            return Output;
+            this.Type = type;
         }
-        //public 
+
+        public override string ToString ()
+        {
+            return string.Format("{0}|{1}|\t{2}|{3}", Time.ToString(DatetimeOuptut), Type.ToString(), Message, Source);
+        }
     }
 
     public static class logging
     {
+        private static List<Logmessage> InMemoryLog = new List<Logmessage>();
+
         public static string write(object Message,logtype type = logtype.info, [CallerMemberName] string Source = "")
         {
-            string output = string.Join(" ",Message);
-            var _ToFile = new Logmessage();
-            string Tofile = _ToFile.Create(Message, type, Source);
+            string Output = string.Join(" ", Message);
+            Logmessage Logmessage = new Logmessage();
+            Logmessage.Create(Output, type, Source);
 
-            for(int i = 0;i<10;i++)
+            if (WithGraphEnviorment.IsCreated == false)
             {
-                StackFrame frame = new StackFrame(i);
-                var method = frame.GetMethod();
-                Console.WriteLine("Source: {2}, Name: {0}, Type: {1}", method.Name, method.DeclaringType, frame.GetFileName());
-            }
-
-
-            //Remove Files older than 1 week
-            List<string> DeletedLogFiles = new string[0].ToList();
-            foreach(string logfile in Directory.EnumerateFiles(Enviorment.LogDir))
-            {
-                var Thisfile = File.GetLastWriteTimeUtc(logfile);
-                if(DateTime.UtcNow >= Thisfile.AddDays(7))
-                {
-                    File.Delete(logfile);
-                    // Console.WriteLine(logfile);
-                    DeletedLogFiles.Add(logfile);
-                }
-            }
-
-            //if file does not exist
-            if (!File.Exists(Enviorment.LogFile))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(Enviorment.LogFile))
-                {
-                    sw.WriteLine(Tofile);
-                }
+                InMemoryLog.Add(Logmessage);
             }
             else
             {
-                using (StreamWriter sw = File.AppendText(Enviorment.LogFile))
+                InMemoryLog.Add(Logmessage);
+
+                //Remove Files not used in 1 week
+                List<string> DeletedLogFiles = new string[0].ToList();
+                foreach (string logfile in Directory.EnumerateFiles(WithGraphEnviorment.LogDir))
                 {
-                    sw.WriteLine(Tofile);
+                    var Thisfile = File.GetLastWriteTimeUtc(logfile);
+                    if (DateTime.UtcNow >= Thisfile.AddDays(7))
+                    {
+                        File.Delete(logfile);
+                        // Console.WriteLine(logfile);
+                        DeletedLogFiles.Add(logfile);
+                    }
                 }
+
+                foreach (string Logline in DeletedLogFiles.Where(m => m != ""))
+                {
+                    var temp = write("Removing " + Path.GetFileName(Logline));
+                }
+
+                using (StreamWriter sw = File.AppendText(WithGraphEnviorment.LogFile))
+                {
+                    foreach (var Line in InMemoryLog)
+                    {
+                        sw.WriteLine(Line.ToString());     
+                    }
+                }
+
+                InMemoryLog.RemoveAll(item => item != null);
             }
 
-            foreach (string Logline in DeletedLogFiles.Where(m=>m != ""))
-            {
-                var temp = write("Removing " + Path.GetFileName(Logline));
-            }
+            return Output;
+        }  
 
-            return output;
-        } 
         public static IEnumerable<Logmessage> read()
         {
-            if (File.Exists(Enviorment.LogFile))
+            if (File.Exists(WithGraphEnviorment.LogFile))
             {
                 // WriteVerbose("Reading from Graphlog @'" + Enviorment.LogFile + "'");
-                foreach (string line in File.ReadAllLines(Enviorment.LogFile))
+                foreach (string line in File.ReadAllLines(WithGraphEnviorment.LogFile))
                 {
                     var Message = new Logmessage();
                     Message.Parse(line);

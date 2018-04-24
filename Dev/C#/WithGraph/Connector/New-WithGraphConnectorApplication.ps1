@@ -1,0 +1,5 @@
+﻿Function New-WithGraphConnectorApplication
+{
+	param()
+
+}
