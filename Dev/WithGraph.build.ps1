@@ -2,15 +2,17 @@ param(
 )
 
 #remember to use ". invoke-build" before fixing this document to get the proper autocomplete
+
+#Starting Build in new process, so the cus
 Task . Startbuild
-Task Build RemoveOlderBuilds,CreateBuildFolder,GatherFiles,GeneratePsxml
+Task Build RemoveOlderBuilds,CreateBuildFolder,GatherFiles,GeneratePsxml,ModuleManifest
 
 
 Enter-Build {
+    import-module PSFramework
     $Loadfiles = gci "$PSScriptRoot\Build" -Filter "lib_*.ps1"
     Write-Output "Loading $(@($Loadfiles).count) Helpers"
     $Loadfiles|%{. $_.FullName}
-
     Write-Output "Setting up Variable"
     #gci function:/
     $script:Buildsettings = @{
@@ -54,12 +56,31 @@ Enter-Build {
             "Net20",
             "portable-net45+win8+wpa81"
         )
+
+        ModuleManifest = @{
+            Path = @{
+                DynamicTag = $true
+                Value      = "%Build%\%Modulename%.psd1"
+            }
+            Author = "Philip Meholm @Withholm"
+            RootModule = @{
+                DynamicTag = $true
+                Value      = "Code\csharp\%ModuleName%.dll"
+            }
+            GUID = ([guid]::NewGuid().guid)
+            ModuleVersion = @{
+                DynamicTag = $true
+                Value      = "%Version%"
+            }
+
+            
+        }
     }
-    $Script:Buildsettings = Convert-Dynamictags -hashtable $Script:Buildsettings -Tag "Dynamictag" -Dynamicvariable "%"
+    $Script:Buildsettings = Convert-Dynamictags -hashtable $Script:Buildsettings -Tag "Dynamictag" -Dynamicvariable "%" -verbose
 }
 
 Task StartBuild {
-    Start-Process PowerShell -ArgumentList "-noexit -command ""cd $psscriptroot ; invoke-build Build -verbose """
+    Start-Process PowerShell -ArgumentList "-noexit -command ""cd '$psscriptroot' ; invoke-build Build""" -Wait
 }
 
 Task RemoveOlderBuilds{
@@ -81,9 +102,12 @@ task CreateBuildFolder{
 
     mkdir @((Join-Path $Buildsettings.build "Code\PS"),
             (Join-Path $Buildsettings.build "Code\Csharp"),
-            (Join-Path $Buildsettings.build "Code\Csharp\Dep")) -Force|%{
+            (Join-Path $Buildsettings.build "Code\Csharp\Dep"),
+            (Join-Path $buildsettings.build "PSXML")) -Force|%{
         Write-Output "`t mkdir $($_.fullname.Replace($Buildsettings.build,''))"
     }
+
+    
 }
 
 task GatherFiles  {
@@ -112,64 +136,27 @@ task GatherFiles  {
         Throw "Error finding .DLL file. Supposed to find 1, Found $(@($csharp).count)"
     }
 
-    $csharp |Copy-Item -Destination (Join-Path $Buildsettings.build "Code\Csharp")
-    write-output "`tFound $(@($csharp).count) Files"
+    #$csharp |Copy-Item -Destination (Join-Path $Buildsettings.build "Code\Csharp")
+    write-output "`tFound File at $($csharp.fullname.replace($(split-path $Solution.FullName),'')). Copying the whole folder"
     
-    $CsharpNugetPackagesPath = (join-path $(split-path $Solution.FullName) "packages")
-    if(!(Test-Path $CsharpNugetPackagesPath))
-    {
-        Throw "Could not find packages folder"
+    Get-ChildItem (split-path $csharp.fullname) -Force|%{
+        Write-Output "`t$($_.fullname.replace((split-path $csharp.fullname),''))"
+        $_|copy-item -Destination (Join-Path $Buildsettings.build "Code\Csharp") -Recurse
     }
-    Write-Output "`tGathering C# Packages"
-
-    $CopyTo = (Join-Path $Buildsettings.build "Code\Csharp\dep")
-    foreach ($folder in Get-ChildItem $CsharpNugetPackagesPath -Directory -Exclude $Buildsettings.FileFilter.Csharp.references.Ignore)
-    {
-        $LibFolder = Join-Path $folder.fullname "lib" -Resolve
-        $VersionFolder = ""
-        :VersionCheck Foreach($Version in $Buildsettings.DotNetVersion)
-        {
-            $VersionFolder = (join-path $LibFolder $Version)
-            if(test-path $VersionFolder)
-            {
-                break :VersionCheck
-            }
-            else {
-                $VersionFolder = ""   
-            }
-        }
-        if(!$VersionFolder)
-        {
-            Throw "Could not find the correct .net version of $($folder.name). Avalible: $((Get-ChildItem $LibFolder -Directory).Name -join ', ').Please update buildsettings.DotNetVersion"
-        }
-
-        Write-verbose "$($folder.name) = $(split-path $VersionFolder -Leaf)"
-        get-childitem $VersionFolder -Filter "*.dll"|Copy-Item -Destination $CopyTo -Force
-    } 
-    Write-output "`tGathered $(@(gci $CopyTo).count) Packages" 
 }
 
 Task LoadDLL -Before GeneratePsxml{
     
-    $DLL = (Get-ChildItem "$($buildsettings.build)\Code\csharp" -Filter "*.dll"|select -First 1)
+    $DLL = (Get-ChildItem "$($buildsettings.build)\Code\csharp" -Filter "*$($buildsettings.ModuleName)*.dll"|select -First 1)
+    
     Write-Output "`t Load DLL: $($dll.fullname)"
-    #[void][System.Reflection.Assembly]::LoadFrom($DLL.fullname)
-    $param = @{
-        PathToDLL = (Get-ChildItem "$($buildsettings.build)\Code\csharp" -Filter "*.dll" -Recurse|select -First 1).FullName
-        Searchoption = "AllDirectories"
-    }
-    Invoke-AssemblyLoader @param
-    # $Dependencies = get-childitem (Join-Path $Buildsettings.build "Code\Csharp\dep")
-    # $csharp = (Get-ChildItem $buildsettings.build -Filter "*.dll" -Recurse)
-
-    # Write-verbose "$($Dependencies.count) Dependencies"
-
-    # Add-Type -Path $csharp.FullName -ReferencedAssemblies @($Dependencies.FullName)
+    [void][System.Reflection.Assembly]::LoadFrom($DLL.fullname)
 }
 
 task GeneratePsxml {
     Write-Output "Gathering info from the PsXml"
-    Write-Output "C#"
+    Write-Output "`tC#"
+    Write-Output "`t----"
 
     $CustomTypeTags = @{
         Class = "PsClassAttribute"
@@ -177,29 +164,30 @@ task GeneratePsxml {
         PropertyHide = "PsPropertyHideAttribute"
     }
     #Get-PSMDAssembly -Filter "*$($buildsettings.ModuleName)*" |New-PSMDFormatTableDefinition
-    Write-Output "Searching for assembly like '$($buildsettings.ModuleName)'"
+    Write-Output "`tSearching for assembly like '$($buildsettings.ModuleName)'"
     $Assembly = Get-PSMDAssembly -Filter "*$($buildsettings.ModuleName)*"
     if(!$Assembly)
     {
         throw "Could not find assembly"
     }
 
-    Write-Output "Finding all classes in assembly with tag like '$($CustomTypeTags.Class)'"
+    Write-Output "`tFinding all classes in assembly with tag like '$($CustomTypeTags.Class)'"
     $classes = @($Assembly |Find-PSMDType|?{$_.CustomAttributes.AttributeType.name -like "$($CustomTypeTags.Class)"})
 
-    Write-Output "Found $($classes.count) classes. Searching for Hidden properties. Untagged are by default Public"
+    Write-Output "`tFound $($classes.count) classes. Searching for Hidden properties. Untagged are by default Public"
     foreach($Class in $classes)
     {
-        #$Class
+        Write-output "`t`tClass: $($class.fullname)"
+
         $Hiddenproperties = $class.DeclaredProperties|?{$_.CustomAttributes.AttributeType.name -eq $($CustomTypeTags.PropertyHide)}
-        Write-Output "Excluding $(($Hiddenproperties.name|%{"'$_'"}) -join ', ')"
+        $Hiddenproperties.name|%{Write-output "`t`t`tHiding '$_'"}
         $UsingClass = Invoke-AssemblyLoader -Type $class -SearchOption "AllDirectories"
-        $UsingClass|New-PSMDFormatTableDefinition -ExcludeProperty $Hiddenproperties.name
-        # $class|fl * -Force
-        # #$class|gm
-        # $class.Assembly.location
-        #new-object $Class|New-PSMDFormatTableDefinition -ExcludeProperty $Hiddenproperties.name
-        #$Class|New-PSMDFormatTableDefinition
+
+        #Create and export Xml fragment
+        $SaveDir = Join-Path $buildsettings.build "PSXML"
+        $classxml = $UsingClass|New-PSMDFormatTableDefinition -ExcludeProperty $Hiddenproperties.name -Fragment
+        $classxml|Out-File (Join-Path $SaveDir "$($class.fullname).xml") -Force
+        Write-Output "`t`t-----"
     }
 }
 
@@ -208,10 +196,7 @@ Task Test {
     #pester $buildsettings.
 }
 
-# task GatherFiles {
-#     get-childitem -Path $Buildsettings.Dev -Recurse "WithGraph.dll"
-# }
-
-# task Task2 {
-#     'Doing Task2...'
-# }
+Task ModuleManifest {
+    $Manifest = $buildsettings.ModuleManifest
+    New-ModuleManifest @Manifest 
+}

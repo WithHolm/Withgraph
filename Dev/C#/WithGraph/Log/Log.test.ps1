@@ -1,0 +1,5 @@
+﻿describe "Logging"{
+    
+}
+
+#[withgraph.Logging]

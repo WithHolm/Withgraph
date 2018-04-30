@@ -1,0 +1,5 @@
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraphCore.csprojResolveAssemblyReference.cache
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.Properties.Resources.resources
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraphCore.csproj.GenerateResource.Cache
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.dll
+C:\git\Withgraph\Dev\C#\WithGraph\obj\Debug\WithGraph.pdb

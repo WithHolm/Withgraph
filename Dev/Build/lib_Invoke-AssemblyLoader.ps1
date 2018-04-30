@@ -1,5 +1,6 @@
 Function Invoke-AssemblyLoader
 {
+    [cmdletbinding()]
     param(
         [System.Reflection.TypeInfo]$Type,
         [String]$PathToDLL,
@@ -8,20 +9,20 @@ Function Invoke-AssemblyLoader
     try {
         if([bool]$PathToDLL)
         {        
-            Write-Verbose "Loading $PathToDLL"
+            #Write-Verbose "Loading $PathToDLL"
             Add-Type -Path $PathToDLL
+            Write-Verbose "Loaded $PathToDLL"
         }
         elseif($Type -ne $null)
         {
             $PathToDLL = $type.Assembly.location
             new-object $type.FullName
+            Write-Verbose "Loaded $($type.FullName)"
             #new-object
         }
 
     }
     catch {
-        #[System.IO.SearchOption]::AllDirectories
-        #$_.Exception.LoaderExceptions.FileName|fl * -Force
         $References = $_.Exception.LoaderExceptions.FileName
         $References|%{
             Write-verbose "Missing Reference: $_"
@@ -33,6 +34,11 @@ Function Invoke-AssemblyLoader
             }
             Invoke-AssemblyLoader -PathToDLL $Referencefile.FullName -SearchOption $SearchOption
         }
+        if($Type -ne $null)
+        {
+            $PathToDLL = ""
+        }
+        return Invoke-AssemblyLoader -Type $Type -PathToDLL $PathToDLL -SearchOption $SearchOption
     }
      #-ReferencedAssemblies @($Dependencies.FullName)
 }
