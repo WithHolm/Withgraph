@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WithGraph
+namespace WithGraphCore
 {
     public static class WithGraphEnviorment
     {

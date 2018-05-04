@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.OData;
 
-namespace WithGraph.Connector
+namespace WithGraphCore.Connector
 {
     class GraphFilter
     {

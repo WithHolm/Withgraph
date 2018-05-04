@@ -7,8 +7,8 @@
     <ProjectGuid>{1A8DA473-72BE-4639-9AC6-2A6A60C69111}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WithGraph</RootNamespace>
-    <AssemblyName>WithGraph</AssemblyName>
+    <RootNamespace>WithGraphCore</RootNamespace>
+    <AssemblyName>WithGraphCore</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

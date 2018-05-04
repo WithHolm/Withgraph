@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Management.Automation;
 
-namespace WithGraph.Connector
+namespace WithGraphCore.Connector
 {
     [Cmdlet(VerbsCommon.Join, "Uri")]
     public class JoinUri : Cmdlet

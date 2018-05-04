@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Management.Automation;
 
-namespace WithGraph
+namespace WithGraphCore
 {
     [Cmdlet(VerbsCommon.Get,"Test")]
     public class GetTest:PSCmdlet

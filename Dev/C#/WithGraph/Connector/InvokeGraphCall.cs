@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Management.Automation;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace WithGraph.Connector
+namespace WithGraphCore.Connector
 {
     [Cmdlet(VerbsLifecycle.Invoke, "Graph")]
     public class InvokeGraphCall : Cmdlet

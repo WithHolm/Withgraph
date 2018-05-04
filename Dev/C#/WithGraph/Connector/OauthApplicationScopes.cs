@@ -8,7 +8,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.ComponentModel.Design.Serialization;
 
-namespace WithGraph.Connector
+namespace WithGraphCore.Connector
 {
     public class OauthApplicationScopes
     {

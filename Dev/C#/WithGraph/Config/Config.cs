@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Management.Automation;
 using Microsoft.PowerShell.Commands;
 
-namespace WithGraph
+namespace WithGraphCore
 {
     [Cmdlet(VerbsCommon.Get, "GraphSettings")]
     public class GetConfig : Cmdlet
@@ -32,7 +32,10 @@ namespace WithGraph
 
     public class GraphSettings
     {
-        public GraphSettings() => Read();
+        public GraphSettings()
+        {
+            Read();
+        }
 
         public RootObject Read()
         {

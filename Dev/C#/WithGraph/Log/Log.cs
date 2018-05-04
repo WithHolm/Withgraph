@@ -11,7 +11,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Reflection;
 
-namespace WithGraph
+namespace WithGraphCore
 {
     [Cmdlet(VerbsCommunications.Write, "GraphLog")]
     public class WriteGraphLog : Cmdlet

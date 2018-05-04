@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WithGraph.Properties {
+namespace WithGraphCore.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WithGraph.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WithGraph.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WithGraphCore.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,24 +62,31 @@ namespace WithGraph.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;odata&quot;: {
-        ///    &quot;Useclasses&quot;: true,
-        ///    &quot;GraphTypeDeserialiseString&quot;: &quot;(.*).com\\/(?&apos;Version&apos;.*)\\/\\$metadata\\#(?&apos;Odata&apos;\\w*)(?&apos;Entity&apos;.*)&quot;,
-        ///    &quot;cache&quot;: {
-        ///      &quot;active&quot;: true,
-        ///      &quot;OdataXmlTemplate&quot;: &quot;Odata.{0}.cache.xml&quot;,
-        ///      &quot;ExpandcacheTemplate&quot;: &quot;ExpandTypes.{0}.Cache.Json&quot;,
-        ///      &quot;CompressExpandCahce&quot;: true
-        ///    }
-        ///  },
-        ///  &quot;Graphversion&quot;: {
-        ///    &quot;Selected&quot;: &quot;beta&quot;,
-        ///    &quot;Avalible &quot;: [
-        ///      &quot;Beta&quot;,
-        ///      &quot;v1.0&quot;
-        ///    ]
-        ///  }
-        ///}.
+        ///	&quot;Connector&quot;:{
+        ///		&quot;ApplicationConnectors&quot;:{
+        ///			
+        ///		}
+        ///	},
+        ///	&quot;Client&quot;:{
+        ///		&quot;LogLevel&quot;:{
+        ///			&quot;Show&quot;:&quot;Full&quot;,
+        ///			&quot;Selected&quot;:&quot;Full&quot;,
+        ///			&quot;Avalible&quot;:[
+        ///				&quot;info&quot;,
+        ///				&quot;verbose&quot;,
+        ///				&quot;debug&quot;,
+        ///				&quot;error&quot;,
+        ///				&quot;Full&quot;
+        ///			]
+        ///		}
+        ///	},
+        ///	&quot;odata&quot;: {
+        ///		&quot;Useclasses&quot;: true,
+        ///		&quot;GraphTypeDeserialiseString&quot;: &quot;(.*).com\\/(?&apos;Version&apos;.*)\\/\\$metadata\\#(?&apos;Odata&apos;\\w*)(?&apos;Entity&apos;.*)&quot;,
+        ///		&quot;cache&quot;: {
+        ///		  &quot;active&quot;: true,
+        ///		  &quot;OdataXmlTemplate&quot;: &quot;Odata.{0}.cache.xml&quot;,
+        ///		  &quot;ExpandcacheTemplate&quot;: &quot;ExpandTypes.{0}.Cache.J [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ConfigTemplate {
             get {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WithGraph.Authentication
+namespace WithGraphCore.Authentication
 {
     [Serializable]
     public class GraphAccount
