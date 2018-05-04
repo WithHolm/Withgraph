@@ -106,6 +106,7 @@ Function Convert-Dynamictags
                             $ref = $hashtable
                             foreach($value in $($split[$i].ToString().Split('.')))
                             {
+                                Write-Verbose "`t`t$value"
                                 $ref = $ref[$value]
                             }
                         }
@@ -181,7 +182,7 @@ Function Convert-Dynamictags
                 $Global:__DynamictagsDoAnotherPass = $false
                 $WorkingHashtable = Convert-Dynamictags -hashtable $hashtable -Tag $Tag -Dynamicvariable $Dynamicvariable
             }
-            $Global:__DynamictagsDoAnotherPass = $null
+            Remove-Variable __DynamictagsDoAnotherPass -Scope global
             return $WorkingHashtable
         }
         else {

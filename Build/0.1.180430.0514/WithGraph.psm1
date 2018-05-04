@@ -1,1 +1,0 @@
-[void][System.Reflection.Assembly]::LoadFrom((join-path $psscriptroot "\Code\Csharp\WithGraph.dll"))
