@@ -1,0 +1,55 @@
+﻿{
+  "Connector": {
+    "ServiceRootEndpoint": {
+      "Selected": "https://graph.microsoft.com",
+      "Avalible": [
+        { "USGoverment": "https://graph.microsoft.com" },
+        { "Germany": "https://graph.microsoft.de" },
+        { "China": "https://graph.microsoft.com" },
+        { "Global": "https://microsoftgraph.chinacloudapi.cn" }
+      ]
+    },
+    "OidAndOauth2Endpoint": {
+      "Selected": "https://graph.microsoft.com",
+      "Avalible": [
+        { "USGoverment": "https://login.microsoftonline.us" },
+        { "Germany": "https://login.microsoftonline.de" },
+        { "China": "https://login.chinacloudapi.cn" },
+        { "Global": "https://login.microsoftonline.com" }
+      ]
+    },
+    "ApplicationConnectors": {
+
+    }
+  },
+	"Client":{
+		"LogLevel":{
+			"Show":"Full",
+			"Selected":"Full",
+			"Avalible":[
+				"info",
+				"verbose",
+				"debug",
+				"error",
+				"Full"
+			]
+		}
+	},
+	"odata": {
+		"Useclasses": true,
+		"GraphTypeDeserialiseString": "(.*).com\\/(?'Version'.*)\\/\\$metadata\\#(?'Odata'\\w*)(?'Entity'.*)",
+		"cache": {
+		  "active": true,
+		  "OdataXmlTemplate": "Odata.{0}.cache.xml",
+		  "ExpandcacheTemplate": "ExpandTypes.{0}.Cache.Json",
+		  "CompressExpandCahce": true
+	}
+	},
+	"Graphversion": {
+		"Selected": "beta",
+		"Avalible": [
+		  "Beta",
+		  "v1.0"
+		]
+	}
+}
