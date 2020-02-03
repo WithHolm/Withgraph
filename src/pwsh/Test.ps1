@@ -1,1 +1,0 @@
-invoke-restmethod "https://proxy.apisandbox.msdn.microsoft.com/svc?url=https://graph.microsoft.com/v1.0/users/" -Headers @{Authorization="Bearer {token:https://graph.microsoft.com/}"}

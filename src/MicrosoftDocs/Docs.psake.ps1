@@ -166,6 +166,12 @@ task ExtractApiData -depends downloadrepo{
         #|? basename -eq "calendargroup-delete"
         foreach($File in (Get-ChildItem $cwd -File -Filter "*.md"))
         {
+            $_Title = $null
+            $_version = $null
+            $_product = $null
+            $_description = $null
+            $_Calls = $null
+            $_Permissions = $null
             try{
                 #foreach file in cwd
                 $_version = $CurrApi
@@ -291,20 +297,27 @@ task ExtractApiData -depends downloadrepo{
                     }
                 }
 
-                $this = [ordered]@{
-                    version = $_version
-                    product = $_product
-                    title =  $_Title
-                    description = $_description
-                    Permissions = $_Permissions
-                    Call = $_Calls
-                } 
-                $ApiDefinition += $this           
+         
             }
             catch{
                 $stacktrace = $_.ScriptStackTrace.split("at")[1].replace("`n",'')
                 Write-Warning "Error handling file $CurrApi/$($file.basename): $_`: at $($stacktrace)"
             }
+            $this = [ordered]@{
+                version = $_version
+                product = $_product
+                title =  $_Title
+                ApiDocPath = @{
+                    #https://github.com/microsoftgraph/microsoft-graph-docs/blob/master/api-reference/v1.0/api/user-list.md
+                    github = "$($git.Replace(".git",''))/blob/master/$($File.Fullname.replace($localgitfolder,'').replace('\','/'))"
+                    #https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http
+                    website = "https://docs.microsoft.com/en-us/graph/api/$($file.basename)?view=graph-rest-$($CurrApi.replace("v",''))&tabs=http"
+                }
+                description = $_description
+                Permissions = $_Permissions
+                Call = $_Calls
+            } 
+            $ApiDefinition += $this  
         }
         $encoding = [System.Text.UTF8Encoding]::new($false)
         [System.IO.File]::WriteAllText((Join-Path $PSScriptRoot "ApiDef_$CurrApi.json"),($ApiDefinition|ConvertTo-Json -Depth 4),$encoding)

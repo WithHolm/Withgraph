@@ -1,17 +1,84 @@
+[CmdletBinding()]
+Param(
+)
 
-$Base = join-path $PSScriptRoot
+$InformationPreference = "Continue"
+function Get-ModuleRoot
+{
+    [CmdletBinding()]
+    Param(
+        [System.IO.DirectoryInfo]$FromPath = $PSScriptRoot
+    )
+    Begin{}
+    Process
+    {
+        While(!$FromPath.GetFiles("*.psm1"))
+        {
+            # Write-Information $FromPath.FullName
+            $frompath = $FromPath.Parent
+        }
+        $FromPath.FullName
+    }
+    End{}
+}
 
-if($PSVersionTable.PSVersion -lt "5.1")
+Function Import-Dll
 {
-    Throw "Your Powershell version is too low! $($PSVersionTable.PSVersion) < 5.1"
+    [CmdletBinding()]
+    Param(
+        [parameter(
+            Mandatory
+        )]
+        [System.IO.FileInfo]$DllPath
+    )
+    if(!$DllPath.Exists)
+    {
+        throw [System.IO.FileLoadException]::new("Could not find file $($dllpath.FullName)")
+    }
+    Write-debug "Loading dll $($DllPath.FullName)"
+    Add-Type -Path $DllPath.FullName
 }
-elseif($PSVersionTable.PSVersion -lt "6.0")
+
+$Root = Get-ModuleRoot
+$Nuget_Partial = "src\cSharp\Graphcli\nuget"
+$Nuget = (Join-Path $Root $Nuget_Partial)
+$ModuleDataFilePath = gci $Root -Filter "*.psd1"|select -First 1
+if(!(Test-Path $ModuleDataFilePath))
 {
-    Write-verbose "Desktop edition. not dotnet 45"
+    throw "Could not find datafile to get the config at path $root"
 }
-elseif($PSVersionTable.PSVersion -lt "7.0"){
-    Write-verbose "Core edition"
+$ModuleDataFile = (Import-PowerShellDataFile -Path $ModuleDataFilePath)
+$DLLsToLoad = $ModuleDataFile.PrivateData.DllsToLoad
+if([string]::IsNullOrEmpty($DLLsToLoad))
+{
+    throw "Could not find dlls to load config"
 }
-else {
-    throw "No handling for $($PSVersionTable.PSVersion) yet"
+
+Foreach($Config in $DLLsToLoad)
+{
+    Write-debug "Starting load of $($config.name)"
+    $LibPath = (join-path $nuget "$($config.name)\$($config.version)\lib")
+    if(!($LibPath))
+    {
+        Throw "Could not find libpath for $($config.name)\$($config.version): $libpath"
+    }
+    try{
+        if($PSVersionTable.PSVersion -ge "6.0")
+        {
+            Import-Dll -DllPath (join-path $LibPath "$($config.core)\$($config.name).dll")
+        }
+        elseif($PSVersionTable.PSVersion -ge "5.1")
+        {
+            Import-Dll -DllPath (join-path $LibPath "$($config.dotnet)\$($config.name).dll")
+        }
+        else {
+            Write-debug "throw"
+            throw
+        }
+    }
+    catch
+    {
+        Write-Warning $_
+        Import-Dll -DllPath (join-path $LibPath "$($config.standard)\$($config.name).dll")
+    }
 }
